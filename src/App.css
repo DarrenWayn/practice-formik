@@ -2,7 +2,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App {
@@ -29,5 +29,13 @@ input[type="email"] {
   background-image: none;
   border: 1px dolid #ccc;
   border-radius: 4px;
+  /* margin-bottom: 20px; */
+}
+
+.form-control {
   margin-bottom: 20px;
+}
+
+.error {
+  color: red;
 }
