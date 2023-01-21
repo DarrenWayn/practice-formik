@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FastField } from "formik";
 import * as Yup from "yup";
 import TextError from "./TextError";
 import FormControl from "./FormControl";
@@ -15,6 +15,7 @@ const initialValues = {
     twitter: "",
   },
   phoneNumbers: ["", ""],
+  phNumbers: [""],
 };
 
 const onSubmit = (values) => {
@@ -35,6 +36,8 @@ function YoutubeForm() {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
+      validateOnChange={false}
+      validateOnBlur={false}
     >
       <Form>
         <FormControl
@@ -73,9 +76,9 @@ function YoutubeForm() {
 
         <div className="form-control">
           <label htmlFor="address">Address</label>
-          <Field name="address">
+          <FastField name="address">
             {(props) => {
-              console.log("render props", props);
+              console.log("Field render");
               const { field, form, meta } = props;
               return (
                 <div>
@@ -84,7 +87,7 @@ function YoutubeForm() {
                 </div>
               );
             }}
-          </Field>
+          </FastField>
           <ErrorMessage name="address" component={TextError} />
         </div>
 
@@ -122,6 +125,12 @@ function YoutubeForm() {
           id="secondaryPh"
           name="phonenumbers[1]"
           placeholder="Enter Your Second Phone Number"
+        />
+
+        <FormControl
+          label="List of Phone Number"
+          name="phNumbers"
+          isArray={true}
         />
 
         <button type="submit">Submit</button>
